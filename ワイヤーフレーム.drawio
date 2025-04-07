@@ -1,0 +1,73 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36" version="26.2.8" pages="4">
+  <diagram name="メイン画面" id="PnTrJNROdx5-VLpo7Q-x">
+    <mxGraphModel dx="1428" dy="743" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1920" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="cXHr_LJnnJewMHRIpHX6-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="1120" height="640" as="geometry" />
+        </mxCell>
+        <mxCell id="cXHr_LJnnJewMHRIpHX6-3" value="アプリ名" style="rounded=1;whiteSpace=wrap;html=1;fontSize=30;" vertex="1" parent="1">
+          <mxGeometry x="60" y="100" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="cXHr_LJnnJewMHRIpHX6-4" value="ルーム一覧" style="rounded=1;whiteSpace=wrap;html=1;fontSize=30;" vertex="1" parent="1">
+          <mxGeometry x="90" y="295" width="470" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="cXHr_LJnnJewMHRIpHX6-5" value="ルーム作成" style="rounded=1;whiteSpace=wrap;html=1;fontSize=30;" vertex="1" parent="1">
+          <mxGeometry x="640" y="290" width="470" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="cXHr_LJnnJewMHRIpHX6-7" value="ログイン" style="rounded=1;whiteSpace=wrap;html=1;fontSize=30;" vertex="1" parent="1">
+          <mxGeometry x="910" y="100" width="230" height="90" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="tX8Zip_6hb8JHQE5OBhK" name="ログイン画面">
+    <mxGraphModel dx="1428" dy="743" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1920" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2Vap8eAUsV8Gg5etLPJn-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="80" width="1120" height="640" as="geometry" />
+        </mxCell>
+        <mxCell id="o-TulE7FyZjk9k1AbOUL-1" value="IDを入力してください。" style="rounded=1;whiteSpace=wrap;html=1;fontSize=30;fontColor=#838383;" vertex="1" parent="1">
+          <mxGeometry x="320" y="230" width="480" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="o-TulE7FyZjk9k1AbOUL-2" value="パスワードを入力してください。" style="rounded=1;whiteSpace=wrap;html=1;fontSize=30;fontColor=#838383;" vertex="1" parent="1">
+          <mxGeometry x="320" y="410" width="480" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="o-TulE7FyZjk9k1AbOUL-3" value="ID" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=30;" vertex="1" parent="1">
+          <mxGeometry x="330" y="190" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="o-TulE7FyZjk9k1AbOUL-4" value="PW" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=30;" vertex="1" parent="1">
+          <mxGeometry x="330" y="370" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="_7TRl_BqngibuKXCsKun" name="ログアウト画面">
+    <mxGraphModel dx="1428" dy="743" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1920" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="WFef-UEUixUbLxf8pe9M-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="1120" height="640" as="geometry" />
+        </mxCell>
+        <mxCell id="NwUMPqZGUWHp_yvilJZw-1" value="ログアウトしました。" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=30;" vertex="1" parent="1">
+          <mxGeometry x="425" y="290" width="350" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NwUMPqZGUWHp_yvilJZw-2" value="OK" style="rounded=1;whiteSpace=wrap;html=1;fontSize=30;" vertex="1" parent="1">
+          <mxGeometry x="540" y="340" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="9s_fH_r4_qBFBfF4oAJG" name="ルーム作成画面">
+    <mxGraphModel dx="1428" dy="743" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1920" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
