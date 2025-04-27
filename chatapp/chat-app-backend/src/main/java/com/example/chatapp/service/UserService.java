@@ -1,6 +1,6 @@
 package com.example.chatapp.service;
 
-import com.example.chatapp.model.User;
+import com.example.chatapp.entity.User;
 import com.example.chatapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

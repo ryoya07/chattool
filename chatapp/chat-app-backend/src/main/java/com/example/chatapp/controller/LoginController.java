@@ -1,6 +1,5 @@
 package com.example.chatapp.controller;
 
-import com.example.chatapp.model.User;
 import com.example.chatapp.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

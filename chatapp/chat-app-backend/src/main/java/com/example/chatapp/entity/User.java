@@ -1,4 +1,4 @@
-package com.example.chatapp.model;
+package com.example.chatapp.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
@@ -24,6 +24,7 @@ public class User{
     @Column(nullable = false)
     private String password;
 
+    @NotBlank(message = "ユーザー名は必須です")
     @Column(name = "username", nullable = false)
     private String username;
 
