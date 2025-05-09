@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./LoginForm.css";
+import styles from "./LoginForm.module.css";
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
@@ -11,7 +11,6 @@ const LoginForm = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    // バリデーションチェック
     if (!email || !password) {
       alert("メールアドレスとパスワードを入力してください。");
       return;
@@ -26,7 +25,7 @@ const LoginForm = () => {
       const data = await res.json();
       if (res.ok) {
         setMessage(data.message);
-        navigate("/chat"); // ログイン成功時にチャット画面へ遷移
+        navigate("/chat");
       } else {
         setMessage("ログイン失敗");
       }
@@ -36,7 +35,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="login-form">
+    <div className={styles.loginForm}>
       <h2>ログイン</h2>
       <form onSubmit={handleLogin}>
         <input
@@ -44,16 +43,18 @@ const LoginForm = () => {
           placeholder="メールアドレス"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          className={styles.input}
         />
         <input
           type="password"
           placeholder="パスワード"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          className={styles.input}
         />
-        <button type="submit">ログイン</button>
+        <button type="submit" className={styles.button}>ログイン</button>
       </form>
-      {message && <p className="login-message">{message}</p>}
+      {message && <p className={styles.message}>{message}</p>}
     </div>
   );
 };
