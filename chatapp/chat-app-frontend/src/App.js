@@ -3,16 +3,24 @@ import { BrowserRouter as Router, Route, Routes, BrowserRouter } from "react-rou
 import LoginForm from "./components/LoginForm";
 import ChatPage from "./components/ChatPage";
 import RegisterForm from "./components/RegisterForm";
+import ChatRoomForm from "./components/ChatRoomForm";
+import ChatRoomList from "./components/ChatRoomList";
 
 function App() {
   return (
-    <BrowserRouter>
+    /*<BrowserRouter>
       <Routes>
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/" element={<LoginForm />} />
         <Route path="/chat" element={<ChatPage />} />
+        <Route path="/chatroom" element={<ChatRoomForm />} />
       </Routes>
-    </BrowserRouter>
+      </BrowserRouter>*/
+      <div className="App">
+        <h1>チャットアプリ</h1>
+        <ChatRoomForm />
+        <ChatRoomList />
+      </div>
   );
 }
 
