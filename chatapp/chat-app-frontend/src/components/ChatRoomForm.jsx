@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import sytles from './ChatRoomForm.module.css'; // CSSモジュールをインポート
 
 const ChatRoomForm = () => {
     const [roomName, setRoomName] = useState('');
@@ -32,7 +33,7 @@ const ChatRoomForm = () => {
     };
 
     return (
-        <div>
+        <div className={sytles.chatRoomForm}>
             <h2>トークルーム作成</h2>
             <input
                 type="text"

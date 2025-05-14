@@ -22,5 +22,10 @@ public class ChatRoomController {
     public List<ChatRoom> getAllChatRooms() {
         return chatRoomRepository.findAll();
     }
+
+    @GetMapping("/{id}")
+    public ChatRoom getChatRoom(@PathVariable Long id) {
+        return chatRoomRepository.findById(id).orElse(null);
+    }
 }
 
