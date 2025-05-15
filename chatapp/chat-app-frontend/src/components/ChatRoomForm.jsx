@@ -34,7 +34,9 @@ const ChatRoomForm = () => {
 
     return (
         <div className={sytles.chatRoomForm}>
-            <h2>トークルーム作成</h2>
+            <h2 style={{ fontSize: "1.5rem", marginBottom: "20px", borderBottom: "2px solid #777", paddingBottom: "15px" }}>
+                トークルーム作成
+            </h2>
             <input
                 type="text"
                 value={roomName}

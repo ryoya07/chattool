@@ -56,20 +56,25 @@ const ChatRoomPage = () => {
 
     return (
         <div className={styles.chatRoomPage}>
-            <h2>チャットルーム: {roomName}（ID: {id}）</h2>
+            <h2>チャットルーム: {roomName}</h2>
             <h3>メッセージ一覧:</h3>
             <ul>
                 {messages.map((msg) => (
                     <li key={msg.id}>- {msg.content}</li>
                 ))}
             </ul>
-            <input
-                type="text"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                placeholder="メッセージを入力"
-            />
-            <button onClick={handleSendMessage}>送信</button>
+            <p style={{marginTop: "20px", fontWeight:"bold"}}>
+                {roomName}へのメッセージを送信
+            </p>
+            <div className="input-group">
+                <input
+                    type="text"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="メッセージを入力"
+                />
+                <button onClick={handleSendMessage}>送信</button>
+            </div>
             {status && <p>{status}</p>}
         </div>
     );
