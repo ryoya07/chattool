@@ -60,7 +60,16 @@ const ChatRoomPage = () => {
             <h3>メッセージ一覧:</h3>
             <ul>
                 {messages.map((msg) => (
-                    <li key={msg.id}>- {msg.content}</li>
+                <li key={msg.id}>
+                    <div style={{ textAlign: "left", marginBottom: "10px" }}>
+                        {msg.timestamp && (
+                        <span style={{ fontSize: "0.85rem", color: "#aaa", display: "block" }}>
+                            {new Date(msg.timestamp).toLocaleString()}
+                        </span>
+                        )}
+                        <strong>{msg.username || "匿名"}</strong>: {msg.content}
+                    </div>
+                </li>
                 ))}
             </ul>
             <p style={{marginTop: "20px", fontWeight:"bold"}}>

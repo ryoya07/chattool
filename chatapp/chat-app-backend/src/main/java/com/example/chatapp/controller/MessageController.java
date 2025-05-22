@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import com.example.chatapp.model.Message;
 import com.example.chatapp.repository.MessageRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -16,6 +17,7 @@ public class MessageController {
 
     @PostMapping("/send")
     public Message sendMessage(@RequestBody Message message) {
+        message.setTimestamp(LocalDateTime.now()); 
         return messageRepository.save(message);
     }
 
