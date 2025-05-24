@@ -1,9 +1,13 @@
-import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import styles from "./ChatRoomPage.module.css";
+import { useParams, useSearchParams } from 'react-router-dom';
+import SockJS from 'sockjs-client';
+import {Client} from '@stomp/stompjs';
 
 const ChatRoomPage = () => {
     const { id } = useParams();
+    const [searchParams] = useSearchParams();
+    const username = searchParams.get('username');
     const [roomName, setRoomName] = useState('');
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
@@ -25,35 +29,50 @@ const ChatRoomPage = () => {
             .catch(err => console.error('メッセージ取得失敗', err));
     }, [id]);
 
+    // WebSocket接続
+    const [client, setClient] = useState(null);
+
+    useEffect(() => {
+        const socket = new SockJS('http://localhost:8080/ws');
+        const stompClient = new Client({
+            webSocketFactory: () => socket,
+            reconnectDelay: 5000,
+            onConnect: () => {
+                console.log("🟢 WebSocket接続成功");
+
+                stompClient.subscribe(`/topic/room/${id}`, (message) => {
+                    const body = JSON.parse(message.body);
+                    setMessages(prev => [...prev, body]);
+                });
+            }
+        });
+
+        stompClient.activate();
+        setClient(stompClient);
+
+        return () => {
+            stompClient.deactivate();
+        };
+    }, [id]);
+
     // メッセージ送信
-    const handleSendMessage = async () => {
-        try {
-            const response = await fetch('http://localhost:8080/messages/send', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+    const handleSendMessage = () => {
+        if (client && client.connected) {
+            client.publish({
+                destination: `/app/chat.send/${id}`,
                 body: JSON.stringify({
                     roomId: id,
                     content: message,
-                }),
+                    username: username || "匿名"
+                })
             });
-
-            if (response.ok) {
-                setStatus('送信成功！');
-                setMessage('');
-                // 再取得して最新メッセージ反映
-                const updatedMessages = await fetch(`http://localhost:8080/messages/room/${id}`).then(res => res.json());
-                setMessages(updatedMessages);
-            } else {
-                setStatus('送信失敗');
-            }
-        } catch (error) {
-            console.error(error);
-            setStatus('エラーが発生しました');
+            setMessage('');
+        } else {
+            console.warn("WebSocket未接続");
+            setStatus("送信失敗（WebSocket未接続）");
         }
     };
-
+    
     return (
         <div className={styles.chatRoomPage}>
             <h2>チャットルーム: {roomName}</h2>

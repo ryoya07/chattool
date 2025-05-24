@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import styles from "./LoginForm.module.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 
-const LoginForm = () => {
+const LoginForm = ({setUsername}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -24,8 +24,10 @@ const LoginForm = () => {
       });
       const data = await res.json();
       if (res.ok) {
+        console.log("ログインユーザー名：", data.username);
+        setUsername(data.username); // ユーザー名をセット
         setMessage(data.message);
-        navigate("/chat");
+        navigate("/rooms"); // ログイン成功後にルーム一覧へ遷移
       } else {
         setMessage("ログイン失敗");
       }

@@ -13,6 +13,11 @@ public class Message {
     private Long roomId;
     private String content;
 
+    @Column(nullable = false)
+    private String username;
+
+    private LocalDateTime timestamp;
+
     // ゲッター・セッター
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -23,24 +28,9 @@ public class Message {
     public String getContent() { return content; }
     public void setContent(String content) { this.content = content; }
 
-    private LocalDateTime timestamp;
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
 
-    public LocalDateTime getTimestamp() { 
-        return timestamp; 
-    }
-
-    public void setTimestamp(LocalDateTime timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    private String username;
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
+    public LocalDateTime getTimestamp() { return timestamp; }
+    public void setTimestamp(LocalDateTime timestamp) { this.timestamp = timestamp; }
 }

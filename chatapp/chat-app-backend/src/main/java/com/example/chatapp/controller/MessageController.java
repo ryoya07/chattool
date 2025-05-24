@@ -18,6 +18,7 @@ public class MessageController {
     @PostMapping("/send")
     public Message sendMessage(@RequestBody Message message) {
         message.setTimestamp(LocalDateTime.now()); 
+        System.out.println("投稿ユーザー名: " + message.getUsername());
         return messageRepository.save(message);
     }
 

@@ -28,7 +28,7 @@ const RegisterForm = () => {
             const data = await response.json();
             if (response.ok) {
                 setMessage(data.message);
-                setTimeout(() => navigate('/chat'),1000);
+                setTimeout(() => navigate('/'),1000);
             } else {
                 setMessage(data.message || '登録に失敗しました。');
             }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './ChatRoomList.module.css';
 
-const ChatRoomList = () => {
+const ChatRoomList = ({username}) => {
     const [rooms, setRooms] = useState([]);
     const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ const ChatRoomList = () => {
             <ul>
                 {rooms.map(room => (
                     <li key={room.id}>
-                        <button onClick={() => navigate(`/chatrooms/${room.id}`)}>
+                        <button onClick={() => navigate(`/chatrooms/${room.id}?username=${encodeURIComponent(username)}`)}>
                             {room.name}
                         </button>
                     </li>

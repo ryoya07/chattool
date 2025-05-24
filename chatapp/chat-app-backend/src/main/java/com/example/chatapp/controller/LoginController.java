@@ -28,7 +28,10 @@ public class LoginController {
         return userService.findByEmail(email)
                 .map(user -> {
                     if (user.getPassword().equals(password)) {
-                        return ResponseEntity.ok(Map.of("message","ログイン成功！")); // ログイン成功
+                        return ResponseEntity.ok(Map.of(
+                            "message","ログイン成功！",
+                            "username", user.getUsername()
+                        )); // ログイン成功
                     } else {
                         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", "パスワードが違います")); // パスワードが間違っている
                     }
