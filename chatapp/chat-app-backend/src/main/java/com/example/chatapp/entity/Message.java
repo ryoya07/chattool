@@ -1,4 +1,4 @@
-package com.example.chatapp.model;
+package com.example.chatapp.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
@@ -10,7 +10,22 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long roomId;
+    @ManyToOne
+    @JoinColumn(name = "room_id", nullable = false)
+    private ChatRoom room;
+
+    @ManyToOne
+    @JoinColumn(name = "chat_room_id")
+    private ChatRoom chatRoom;
+
+    public ChatRoom getChatRoom() {
+        return chatRoom;
+    }
+
+    public void setChatRoom(ChatRoom chatRoom) {
+        this.chatRoom = chatRoom;
+    }
+
     private String content;
 
     @Column(nullable = false)
@@ -21,9 +36,6 @@ public class Message {
     // ゲッター・セッター
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
-
-    public Long getRoomId() { return roomId; }
-    public void setRoomId(Long roomId) { this.roomId = roomId; }
 
     public String getContent() { return content; }
     public void setContent(String content) { this.content = content; }

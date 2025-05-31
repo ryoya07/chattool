@@ -1,9 +1,12 @@
-package com.example.chatapp.model;
+package com.example.chatapp.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import java.util.List;
 
 @Entity
 public class ChatRoom {
@@ -11,6 +14,9 @@ public class ChatRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @OneToMany(mappedBy = "chatRoom",cascade = CascadeType.ALL)
+    private List<Message> messages;
 
     private String name;
 
