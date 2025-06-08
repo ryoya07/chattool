@@ -1,9 +1,10 @@
 package com.example.chatapp.controller;
 
-import com.example.chatapp.model.Message;
 import org.springframework.messaging.handler.annotation.*;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
+
+import com.example.chatapp.entity.Message;
 
 import java.time.LocalDateTime;
 

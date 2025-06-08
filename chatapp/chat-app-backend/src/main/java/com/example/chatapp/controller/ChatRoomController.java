@@ -2,7 +2,8 @@ package com.example.chatapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.example.chatapp.model.ChatRoom;
+
+import com.example.chatapp.entity.ChatRoom;
 import com.example.chatapp.repository.ChatRoomRepository;
 import java.util.List;
 
