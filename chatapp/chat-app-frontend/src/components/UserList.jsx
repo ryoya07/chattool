@@ -5,9 +5,11 @@ const UserList = () => {
 
     // ユーザー一覧取得
     useEffect(() => {
-    fetch("http://localhost:8080/users")
-        .then((res) => res.json())
-        .then((data) => {
+    fetch("http://localhost:8080/users", {
+      credentials: "include", // ← 追加！
+    })
+      .then((res) => res.json())
+      .then((data) => {
         console.log("ユーザーデータ取得:", data);
         if (Array.isArray(data)) {
             setUsers(data);
@@ -29,14 +31,16 @@ const UserList = () => {
     try {
       const res = await fetch(`http://localhost:8080/users/${userId}`, {
         method: "DELETE",
+        credentials: "include"
       });
 
       if (res.ok) {
         alert("ユーザーを削除しました");
         // 再取得
-        const updated = await fetch("http://localhost:8080/users").then((res) =>
-          res.json()
-        );
+        const updated = await fetch("http://localhost:8080/users", {
+          credentials: "include",
+        }).then((res) => res.json());
+
         setUsers(updated);
       } else {
         const data = await res.json();

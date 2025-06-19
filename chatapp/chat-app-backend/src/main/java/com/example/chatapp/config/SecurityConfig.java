@@ -2,30 +2,44 @@ package com.example.chatapp.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.security.config.Customizer;
 
 @Configuration
+@EnableWebSecurity
 public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable()) // 開発中はCSRFを無効化（ReactからPOSTできるように）
-            .authorizeHttpRequests(auth -> auth
+            .cors(Customizer.withDefaults())
+            .csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(authz -> authz
                 .requestMatchers(
                     "/login",
+                    "/login/me",
+                    "/logout",
                     "/register",
                     "/chatrooms/**",
-                    "/messages/**",
-                    "/ws/**",
-                    "/h2-console/**"
+                    "/h2-console/**",
+                    "/ws/**"
                 ).permitAll()
                 .anyRequest().authenticated()
             )
-            .httpBasic(Customizer.withDefaults()); // 簡易Basic認証（確認用）
+            .logout(logout -> logout
+                .logoutUrl("/logout") // フロントエンドと合わせる
+                .logoutSuccessHandler((request, response, authentication) -> {
+                    response.setStatus(HttpServletResponse.SC_OK);
+                })
+                .permitAll()
+            );
+
+        http.headers(headers -> headers.frameOptions().disable());
 
         return http.build();
-    }
+}
+
 }

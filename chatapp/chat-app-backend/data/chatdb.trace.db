@@ -1,0 +1,16 @@
+2025-06-20 00:35:00.645777+09:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "[*]ID"; 期待されるステートメント "INSERT"
+Syntax error in SQL statement "[*]ID"; expected "INSERT"; SQL statement:
+ID [42001-232]
+2025-06-20 00:38:52.275604+09:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM CHAT_ROOM ID [*]NAME"
+Syntax error in SQL statement "SELECT * FROM CHAT_ROOM ID [*]NAME"; SQL statement:
+SELECT * FROM CHAT_ROOM ID NAME [42000-232]
+2025-06-20 00:38:58.883697+09:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: テーブル "NAME" が見つかりません
+Table "NAME" not found; SQL statement:
+SELECT * FROM  NAME [42102-232]
+2025-06-20 00:39:00.678827+09:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: テーブル "NAME" が見つかりません
+Table "NAME" not found; SQL statement:
+SELECT * FROM NAME [42102-232]

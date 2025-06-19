@@ -1,6 +1,7 @@
 package com.example.chatapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.chatapp.entity.ChatRoom;
@@ -15,18 +16,25 @@ public class ChatRoomController {
     private ChatRoomRepository chatRoomRepository;
 
     @PostMapping("/create")
-    public ChatRoom createChatRoom(@RequestBody ChatRoom chatRoom) {
-        return chatRoomRepository.save(chatRoom);
+    public ResponseEntity<ChatRoom> createChatRoom(@RequestBody ChatRoom chatRoom) {
+        ChatRoom saved = chatRoomRepository.save(chatRoom);
+        return ResponseEntity.ok(saved);
     }
 
     @GetMapping
-    public List<ChatRoom> getAllChatRooms() {
-        return chatRoomRepository.findAll();
+    public ResponseEntity<List<ChatRoom>> getAllChatRooms() {
+        List<ChatRoom> chatRooms = chatRoomRepository.findAll();
+        return ResponseEntity.ok(chatRooms);
     }
 
     @GetMapping("/{id}")
-    public ChatRoom getChatRoom(@PathVariable Long id) {
-        return chatRoomRepository.findById(id).orElse(null);
+    public ResponseEntity<ChatRoom> getChatRoom(@PathVariable Long id) {
+        ChatRoom chatRoom = chatRoomRepository.findById(id).orElse(null);
+        if (chatRoom != null) {
+            return ResponseEntity.ok(chatRoom);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
 

@@ -15,7 +15,9 @@ const ChatRoomPage = () => {
 
     // ルーム名取得
     useEffect(() => {
-        fetch(`http://localhost:8080/chatrooms/${id}`)
+        fetch(`http://localhost:8080/chatrooms/${id}`, {
+            credentials: "include"
+        })
             .then(res => res.json())
             .then(data => setRoomName(data.name))
             .catch(err => console.error('ルーム取得失敗', err));
@@ -23,7 +25,9 @@ const ChatRoomPage = () => {
 
     // メッセージ一覧取得
     useEffect(() => {
-        fetch(`http://localhost:8080/messages/room/${id}`)
+        fetch(`http://localhost:8080/messages/room/${id}`, {
+            credentials: "include"
+        })
             .then(res => res.json())
             .then(data => setMessages(data))
             .catch(err => console.error('メッセージ取得失敗', err));
