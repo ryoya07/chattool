@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from './LoginForm.module.css'; // CSSモジュールを使う場合
+import styles from './LoginForm.module.css';
+import { useAuth } from '../context/AuthContext';
 
 const LoginForm = () => {
     const navigate = useNavigate();
+    const { login } = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
@@ -16,6 +18,7 @@ const LoginForm = () => {
                     credentials: 'include'
                 });
                 if (res.ok) {
+                    login();
                     navigate('/rooms');
                 }
             } catch (err) {
@@ -27,44 +30,43 @@ const LoginForm = () => {
 
     // ✅ ログイン送信処理
     const handleSubmit = async (e) => {
-        e.preventDefault();
+    e.preventDefault();
 
-        if (!email || !password) {
-            setMessage("メールアドレスとパスワードを入力してください。");
-            return;
-        }
+    if (!email || !password) {
+        setMessage("メールアドレスとパスワードを入力してください。");
+        return;
+    }
 
-        try {
-            const response = await fetch("http://localhost:8080/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ email, password }),
-                credentials: "include"
+    try {
+        const response = await fetch("http://localhost:8080/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password
+            }),
+            credentials: "include"
             });
 
-            const text = await response.text();
-            let data = {};
-            try {
-                data = text ? JSON.parse(text) : {};
-            } catch (err) {
-                console.error("JSONのパースエラー:", err);
-                setMessage("サーバーからの応答が不正です。");
-                return;
-            }
-
             if (response.ok) {
-                setMessage(data.message || "ログイン成功！");
-                console.log("ログイン成功:", data.username);
+                setMessage("ログイン成功！");
+                login();
                 setTimeout(() => navigate("/rooms"), 800);
             } else {
-                setMessage(data.message || "ログインに失敗しました。");
+                setMessage("ログインに失敗しました。");
             }
         } catch (error) {
             console.error("通信エラー:", error);
             setMessage("通信エラーが発生しました。");
         }
+    };
+
+
+    // ✅ 新規登録ボタンの処理
+    const handleRegister = () => {
+        navigate('/register');
     };
 
     return (
@@ -94,6 +96,9 @@ const LoginForm = () => {
             </div>
 
             <button type="submit" className={styles.button}>ログイン</button>
+            <p className={styles.or}>または</p>
+            <button type="button" className={styles.button} onClick={handleRegister}>新規作成</button>
+
 
             {message && <p className={styles.message}>{message}</p>}
         </form>

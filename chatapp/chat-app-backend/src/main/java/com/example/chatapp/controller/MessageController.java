@@ -39,6 +39,6 @@ public class MessageController {
 
     @GetMapping("/room/{roomId}")
     public List<Message> getMessagesByRoom(@PathVariable Long roomId) {
-        return messageRepository.findByChatRoomId(roomId); // ← 変更済みのリポジトリに対応
+        return messageRepository.findByChatRoomId(roomId);
     }
 }

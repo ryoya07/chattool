@@ -18,7 +18,7 @@ const ChatRoomForm = () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ name: roomName }),
-                credentials: "include" // ← 必須！
+                credentials: "include"
             });
 
             if (response.ok) {

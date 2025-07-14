@@ -1,28 +1,33 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
+  const navigate = useNavigate();
 
     // ユーザー一覧取得
     useEffect(() => {
     fetch("http://localhost:8080/users", {
-      credentials: "include", // ← 追加！
+      credentials: "include",
     })
-      .then((res) => res.json())
+      .then((res) => {
+        console.log("✅ レスポンスオブジェクト:", res);
+        return res.json();
+      })
       .then((data) => {
-        console.log("ユーザーデータ取得:", data);
+        console.log("✅ ユーザーデータ取得:", data);
         if (Array.isArray(data)) {
-            setUsers(data);
+          setUsers(data);
         } else {
-            console.warn("⚠️ 配列じゃないデータが返ってきた:", data);
-            setUsers([]); // fallbackしてエラー回避
+          console.warn("⚠️ 配列じゃないデータが返ってきた:", data);
+          setUsers([]);
         }
-        })
-        .catch((err) => {
-        console.error("取得エラー:", err);
+      })
+      .catch((err) => {
+        console.error("❌ 通信エラー:", err);
         setUsers([]);
-        });
-    }, []);
+      });
+  }, []);
 
   // 削除処理
   const handleDeleteUser = async (userId) => {
@@ -59,6 +64,7 @@ const UserList = () => {
         {users.map((user) => (
           <li key={user.id}>
             {user.username}（{user.email}）{" "}
+            <button onClick={() => navigate(`/users/${user.id}/edit`)}>編集</button>
             <button onClick={() => handleDeleteUser(user.id)}>削除</button>
           </li>
         ))}

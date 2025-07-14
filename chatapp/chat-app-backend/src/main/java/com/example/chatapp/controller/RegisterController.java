@@ -22,7 +22,6 @@ public class RegisterController {
         String username = userData.get("username");
         String password = userData.get("password");
 
-        // ここでバリデーションや重複チェックしてもOK
         User user = new User();
         user.setEmail(email);
         user.setUsername(username);

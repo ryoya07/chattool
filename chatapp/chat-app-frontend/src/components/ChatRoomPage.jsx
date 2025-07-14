@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from "./ChatRoomPage.module.css";
 import { useParams, useSearchParams } from 'react-router-dom';
 import SockJS from 'sockjs-client';
 import {Client} from '@stomp/stompjs';
 
 const ChatRoomPage = () => {
+    const navigate = useNavigate();
     const { id } = useParams();
     const [searchParams] = useSearchParams();
     const username = searchParams.get('username');
@@ -79,6 +81,15 @@ const ChatRoomPage = () => {
     
     return (
         <div className={styles.chatRoomPage}>
+            <button 
+                onClick={() => navigate('/rooms')}
+                style={{top: '10px',
+                left: '10px',
+                padding: '6px 12px',
+                fontSize: '0.9rem'
+            }}>
+                チャットルーム一覧に戻る
+            </button>
             <h2>チャットルーム: {roomName}</h2>
             <h3>メッセージ一覧:</h3>
             <ul>

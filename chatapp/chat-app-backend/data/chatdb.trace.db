@@ -14,3 +14,39 @@ SELECT * FROM  NAME [42102-232]
 org.h2.jdbc.JdbcSQLSyntaxErrorException: テーブル "NAME" が見つかりません
 Table "NAME" not found; SQL statement:
 SELECT * FROM NAME [42102-232]
+2025-07-07 02:52:24.018795+09:00 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM MESSAGE CHAT_ROOM [*]USERS"
+Syntax error in SQL statement "SELECT * FROM MESSAGE CHAT_ROOM [*]USERS"; SQL statement:
+SELECT * FROM MESSAGE CHAT_ROOM USERS [42000-232]
+2025-07-07 02:52:39.258319+09:00 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM USERS CHAT_ROOM [*]MESSAGE"
+Syntax error in SQL statement "SELECT * FROM USERS CHAT_ROOM [*]MESSAGE"; SQL statement:
+SELECT * FROM USERS CHAT_ROOM MESSAGE [42000-232]
+2025-07-07 02:55:53.483914+09:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM MESSAGE USERS [*]CHAT_ROOM"
+Syntax error in SQL statement "SELECT * FROM MESSAGE USERS [*]CHAT_ROOM"; SQL statement:
+SELECT * FROM MESSAGE USERS CHAT_ROOM [42000-232]
+2025-07-07 02:55:54.673633+09:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM MESSAGE USERS [*]CHAT_ROOM"
+Syntax error in SQL statement "SELECT * FROM MESSAGE USERS [*]CHAT_ROOM"; SQL statement:
+SELECT * FROM MESSAGE USERS CHAT_ROOM [42000-232]
+2025-07-07 02:55:54.854316+09:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM MESSAGE USERS [*]CHAT_ROOM"
+Syntax error in SQL statement "SELECT * FROM MESSAGE USERS [*]CHAT_ROOM"; SQL statement:
+SELECT * FROM MESSAGE USERS CHAT_ROOM [42000-232]
+2025-07-07 02:55:55.023367+09:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM MESSAGE USERS [*]CHAT_ROOM"
+Syntax error in SQL statement "SELECT * FROM MESSAGE USERS [*]CHAT_ROOM"; SQL statement:
+SELECT * FROM MESSAGE USERS CHAT_ROOM [42000-232]
+2025-07-07 02:55:55.169630+09:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM MESSAGE USERS [*]CHAT_ROOM"
+Syntax error in SQL statement "SELECT * FROM MESSAGE USERS [*]CHAT_ROOM"; SQL statement:
+SELECT * FROM MESSAGE USERS CHAT_ROOM [42000-232]
+2025-07-07 02:55:55.394005+09:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM MESSAGE USERS [*]CHAT_ROOM"
+Syntax error in SQL statement "SELECT * FROM MESSAGE USERS [*]CHAT_ROOM"; SQL statement:
+SELECT * FROM MESSAGE USERS CHAT_ROOM [42000-232]
+2025-07-07 02:56:12.044539+09:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * FROM CHAT_ROOM NAME [*]ID"
+Syntax error in SQL statement "SELECT * FROM CHAT_ROOM NAME [*]ID"; SQL statement:
+SELECT * FROM CHAT_ROOM NAME ID [42000-232]
