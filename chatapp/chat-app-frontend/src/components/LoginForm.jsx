@@ -51,7 +51,6 @@ const LoginForm = () => {
             });
 
             if (response.ok) {
-                setMessage("ログイン成功！");
                 login();
                 setTimeout(() => navigate("/rooms"), 800);
             } else {

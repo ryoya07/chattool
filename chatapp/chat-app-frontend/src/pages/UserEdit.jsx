@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import Styles from './UserEdit.module.css';
 
 const UserEdit = () => {
   const { id } = useParams();
@@ -30,7 +31,7 @@ const UserEdit = () => {
       });
 
       if (res.ok) {
-        alert("更新成功！");
+        alert("更新しました！");
         navigate("/users");
       } else {
         const data = await res.json();
@@ -43,18 +44,17 @@ const UserEdit = () => {
   };
 
   return (
-    <div>
+    <div className={Styles.userEdit}>
       <h2>ユーザー情報の編集</h2>
-      <label>
+      <label className={Styles.label}>
         ユーザー名：
         <input
           type="text"
           value={user.username}
           onChange={(e) => setUser({ ...user, username: e.target.value })}
         />
-      </label>
       <br />
-      <label>
+
         メールアドレス：
         <input
           type="email"
@@ -62,8 +62,7 @@ const UserEdit = () => {
           onChange={(e) => setUser({ ...user, email: e.target.value })}
         />
       </label>
-      <br />
-      <button onClick={handleUpdate}>更新</button>
+      <button className={Styles.button} onClick={handleUpdate}>更新</button>
     </div>
   );
 };

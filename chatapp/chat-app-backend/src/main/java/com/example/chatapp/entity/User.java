@@ -2,11 +2,17 @@ package com.example.chatapp.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @Table(name = "users")
 public class User{
 
@@ -28,12 +34,13 @@ public class User{
     @Column(name = "username", nullable = false)
     private String username;
 
-    @Column(name = "created_at")
+    @CreationTimestamp
+    @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
     public User(){}
 
-    public User(String email, String password, String username) {
+    public User(String email, String password, String username, String createdAt) {
         this.email = email;
         this.password = password;
         this.username = username;

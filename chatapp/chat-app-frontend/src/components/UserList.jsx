@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styles from './UserList.module.css';
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
@@ -58,14 +59,14 @@ const UserList = () => {
   };
 
   return (
-    <div>
-      <h2>ユーザー一覧</h2>
+    <div className={styles.userList}>
+      <h2>ユーザー名リスト</h2>
       <ul>
         {users.map((user) => (
           <li key={user.id}>
             {user.username}（{user.email}）{" "}
-            <button onClick={() => navigate(`/users/${user.id}/edit`)}>編集</button>
-            <button onClick={() => handleDeleteUser(user.id)}>削除</button>
+            <button className={styles.button} onClick={() => navigate(`/users/${user.id}/edit`)}>編集</button>
+            <button className={styles.button} onClick={() => handleDeleteUser(user.id)}>削除</button>
           </li>
         ))}
       </ul>
